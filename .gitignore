@@ -1,3 +1,15 @@
+# Ignore all
+*
+
+# Unignore all dirs
+!/**/
+
+# Unignore all with extensions
+!*.*
+
+### Above combination will ignore all files without extension ###
+
+
 # Prerequisites
 *.d
 
@@ -30,3 +42,6 @@
 *.exe
 *.out
 *.app
+
+.vscode/
+
