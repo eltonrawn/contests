@@ -25,9 +25,12 @@ int b[2000][2000];
 map<string, int> ss;
 vector<int> pps[2000];
 
-bool taken_col[2000];
+// bool taken_col[2000];
 int ord[2000], sa[2000];
 int st[2000];
+
+vector<int> mis[2000][2000];
+int mis_cnt[2000];
 
 
 int main() {
@@ -94,49 +97,56 @@ int main() {
     st[ sa[1] ] = 1;
     // cout << "mark st : " << sa[1] << " " << 1 << endl;
     /// order of a, corresponding to b is done
-    FOR(col, 1, m) {
-        bool yoyo = 0;
-        FOR(j, 1, m) {
-            if(taken_col[j]) {
-                continue;
+
+    queue<int> q;
+
+    FOR(j, 1, m) {
+        bool chk = 1;
+        FOR(pp, 2, n) {
+            int back = sa[pp - 1];
+            int cur = sa[pp];
+            if(a[back][j] > a[cur][j]) {
+                /// not possible
+                chk = 0;
+                mis[cur][back].PB(j);
+                mis_cnt[j]++;
             }
-            bool chk = 1;
-            FOR(pp, 2, n) {
-                if(st[ sa[pp] ]) {
-                    continue;
-                }
-                int back = sa[pp - 1];
-                int cur = sa[pp];
-                if(a[back][j] > a[cur][j]) {
-                    /// not possible
-                    chk = 0;
-                    break;
-                }
-            }
-            if(chk == 0) {
-                continue;
-            }
-            
-            // cout << "col taken : " << j << endl;
-            
-            FOR(pp, 2, n) {
-                if(st[ sa[pp] ]) {
-                    continue;
-                }
-                int back = sa[pp - 1];
-                int cur = sa[pp];
-                if(a[back][j] < a[cur][j]) {
-                    st[ sa[pp] ] = 1;
-                    // cout << "mark st : " << sa[pp] << " " << pp << endl;
-                }
-            }
-            ans.push_back(j);
-            taken_col[j] = 1;
-            yoyo = 1;
-            break;
         }
-        if(yoyo == 0) {
-            cout << -1 << endl;
+        if(chk == 0) {
+            continue;
+        }
+        
+        // cout << "col taken : " << j << endl;
+        
+        q.push(j);
+    }
+
+    while(!q.empty()) {
+        int j = q.front();
+        ans.PB(j);
+        q.pop();
+        FOR(pp, 2, n) {
+            if(st[ sa[pp] ]) {
+                continue;
+            }
+            int back = sa[pp - 1];
+            int cur = sa[pp];
+            if(a[back][j] < a[cur][j]) {
+                st[ sa[pp] ] = 1;
+                for(int col: mis[cur][back]) {
+                    mis_cnt[col]--;
+                    if(mis_cnt[col] == 0) {
+                        q.push(col);
+                    }
+                }
+                // cout << "mark st : " << sa[pp] << " " << pp << endl;
+            }
+        }
+    }
+    
+    FOR(col, 1, m) {
+        if(mis_cnt[col]) {
+            cout << -1 << "\n";
             return 0;
         }
     }
