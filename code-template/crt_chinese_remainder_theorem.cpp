@@ -103,7 +103,7 @@ int main() {
     visualize_a_case(21, 15);
 }
 /**
- * tags: crt, chinese remainder theorem
+ * tags: crt, chinese remainder theorem, number theory
  * 
  * resources: 
  * 1. https://forthright48.com/extended-euclidean-algorithm/
