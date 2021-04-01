@@ -5,3 +5,5 @@ mst
 minimum spanning tree
 modified minimum spanning tree
 number theory
+graph
+all pairs shortest path
