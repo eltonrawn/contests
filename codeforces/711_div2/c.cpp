@@ -35,44 +35,26 @@ int main() {
         FOR(i, 0, k + 1) {
             FOR(j, 0, n + 1) {
                 FOR(dir, 0, 1) {
+                    if(j == n + 1 || j == 0 || i == 1) {
+                        dp[i][j][dir] = 1;
+                        continue;
+                    }
                     dp[i][j][dir] = 0;
                 }
             }
         }
         
-        FOR(i, 1, k) {
+        FOR(i, 2, k) {
             FOR(dir, 0, 1) {
                 if(dir == 0) {
                     FOR(j, 1, n) {
-                        if(j == n) {
-                            dp[i][j][dir] += dp[i][j - 1][dir];
-                            if(i > 1) {
-                                dp[i][j][dir]++;
-                            }
-                        }
-                        if(j == 1) {
-                            dp[i][j][dir] += dp[i - 1][j + 1][!dir] + 1;
-                        }
-                        if(j != 1 && j != n) {
-                            dp[i][j][dir] = dp[i][j - 1][dir] + dp[i - 1][j + 1][!dir];
-                        }
+                        dp[i][j][dir] = dp[i][j - 1][dir] + dp[i - 1][j + 1][!dir];
                         dp[i][j][dir] %= MOD;
                     }
                 }
                 else {
                     ROF(j, n, 1) {
-                        if(j == 1) {
-                            dp[i][j][dir] += dp[i][j + 1][dir];
-                            if(i > 1) {
-                                dp[i][j][dir]++;
-                            }
-                        }
-                        if(j == n) {
-                            dp[i][j][dir] += dp[i - 1][j - 1][!dir] + 1;
-                        }
-                        if(j != 1 && j != n) {
-                            dp[i][j][dir] = dp[i][j + 1][dir] + dp[i - 1][j - 1][!dir];
-                        }
+                        dp[i][j][dir] = dp[i][j + 1][dir] + dp[i - 1][j - 1][!dir];
                         dp[i][j][dir] %= MOD;
                     }
                 }
