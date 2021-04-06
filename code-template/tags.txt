@@ -7,3 +7,5 @@ modified minimum spanning tree
 number theory
 graph
 all pairs shortest path
+dsu on tree
+heavy light trick
