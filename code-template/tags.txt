@@ -12,3 +12,5 @@ heavy light trick
 segment tree
 lazy propogation
 segment tree with binary search
+dp
+iterative dp
