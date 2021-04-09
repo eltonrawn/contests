@@ -9,3 +9,6 @@ graph
 all pairs shortest path
 dsu on tree
 heavy light trick
+segment tree
+lazy propogation
+segment tree with binary search

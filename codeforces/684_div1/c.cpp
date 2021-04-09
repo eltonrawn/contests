@@ -228,4 +228,5 @@ int main() {
     return 0;
 }
 /**
+ * tags: segment tree, lazy propogation
 */
