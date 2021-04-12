@@ -14,3 +14,8 @@ lazy propogation
 segment tree with binary search
 dp
 iterative dp
+modulo inverse
+stars and bars
+number of unique permutation
+combinatorics
+fermat's little theorem
