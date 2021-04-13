@@ -19,3 +19,7 @@ stars and bars
 number of unique permutation
 combinatorics
 fermat's little theorem
+euler circuit
+euler path
+counting dp
+number of ways dp
