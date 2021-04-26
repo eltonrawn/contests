@@ -25,3 +25,4 @@ counting dp
 number of ways dp
 probability
 randomized algorithm
+binary lifting
