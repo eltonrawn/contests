@@ -26,3 +26,5 @@ number of ways dp
 probability
 randomized algorithm
 binary lifting
+gcd
+euclidean algorithm
