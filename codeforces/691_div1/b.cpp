@@ -66,6 +66,8 @@ int main() {
 }
 /**
  * 
+ * tags: iterative dp
+ * 
  * after selecting k glasses, 
  * total capacity of those k glasses: A
  * total contained water of these k glasses: bk
