@@ -1,27 +1,18 @@
 #include<bits/stdc++.h>
- 
+
 using namespace std;
- 
-#define FOR(i, j, k) for(int i = j; i <= k; i++)
-#define ROF(i, j, k) for(int i = j; i >= k; i--)
-#define PB push_back
-#define MEM(n, val) memset((n), val, sizeof(n))
-#define FastIO ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-#define F first
-#define S second
-#define MP make_pair
-#define LL long long
+
 #define MOD 998244353
-#define MX 200010
-#define INFL 1000000000000000000LL
-#define INF 1000000000
- 
+#define SZ 200010
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+typedef long long LL;
 typedef pair<int, int> PII;
 typedef pair<LL, LL> PLL;
- 
- 
+
+
 /****************************short sieve and prime fact generate start***********************************/
-bool flag[10000020];
+bool flag[SZ];
 vector<int> prime;
  
 void gen_sieve(int limit)	{
@@ -61,14 +52,56 @@ void prime_fact(LL tmp)  {
 }
 /****************************short sieve and prime fact generate end***********************************/
 
+
+LL my_pow(int val, int cnt) {
+    LL ans = 1;
+    for(int i = 1; i <= cnt; i++) {
+        ans *= val;
+    }
+    return ans;
+}
+
+int n;
+int ara[SZ];
+map<PII, int> freq;
+map<int, int> mx_fact;
+
 int main() {
 //    freopen("in.txt", "r", stdin);
 //    freopen("out.txt", "w", stdout);
-    mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    FastIO;
-    gen_sieve(10000010);
+    
+    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    gen_sieve(SZ - 1);
+    cin >> n;
+    for(int i = 1; i <= n; i++) {
+        cin >> ara[i];
+    }
+
+    for(int i = 1; i <= n; i++) {
+        prime_fact(ara[i]);
+        for(PII ff: fact) {
+            int pr = ff.first;
+            int cnt = ff.second;
+            freq[ff]++;
+            mx_fact[pr] = max(mx_fact[pr], cnt);
+        }
+    }
+    LL ans = 1LL;
+    for(auto it: mx_fact) {
+        int pr = it.first;
+        int cnt = it.second;
+        int csum = 0;
+        for(int i = cnt; i >= 1; i--) {
+            csum += freq[{pr, i}];
+            if(csum >= n - 1) {
+                ans *= my_pow(pr, i);
+                break;
+            }
+        }
+    }
+    cout << ans << endl;
+
     return 0;
 }
 /**
- * tags: number theory
 */
