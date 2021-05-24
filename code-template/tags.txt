@@ -31,3 +31,5 @@ euclidean algorithm
 number of divisors
 nod
 sieve
+range minimum query
+rmq
