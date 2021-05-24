@@ -28,3 +28,6 @@ randomized algorithm
 binary lifting
 gcd
 euclidean algorithm
+number of divisors
+nod
+sieve

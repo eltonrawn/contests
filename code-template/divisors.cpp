@@ -21,19 +21,19 @@ typedef pair<LL, LL> PLL;
 
 
 /****************************short sieve and prime fact generate start***********************************/
-bool flag[10000020];
+bool flag[2000020];
 vector<int> prime;
  
 void gen_sieve(int limit)	{
-    MEM(flag, 0);
+    memset(flag, 0, sizeof(flag));
 	int sqrt_n = sqrt(limit);
 	for (int i = 3; i <= sqrt_n; i += 2)	{
 		if (!flag[i])
 			for(int j = i * i; j <= limit; j += (i * 2)) flag[j] = 1;
 	}
-	prime.clear();prime.PB(2);
+	prime.clear();prime.push_back(2);
     for(int i = 3; i <= limit; i += 2)   {
-        if(flag[i] == 0)prime.PB(i);
+        if(flag[i] == 0)prime.push_back(i);
     }
 }
  
@@ -49,13 +49,13 @@ void prime_fact(LL tmp)  {
                 tmp /= prime[i];
                 cnt++;
             }
-            fact.PB({prime[i], cnt});
+            fact.push_back({prime[i], cnt});
         }
         sqrtn = sqrt(tmp);
     }
     if(tmp != 1)    {
         LL cnt = 1;
-        fact.PB({tmp, cnt});
+        fact.push_back({tmp, cnt});
     }
     // sort(fact.begin(), fact.end());
 }
@@ -67,15 +67,15 @@ vector<int> divisors;
 void gen_divisors(int x) {
     prime_fact(x);
     divisors.clear();
-    divisors.PB(1);
+    divisors.push_back(1);
     int sz = fact.size(); //size of prime factorization
-    FOR(i, 0, sz - 1)   {
+    for(int i = 0; i < sz; i++) {
         int tmpsz = divisors.size();
         int gun = 1;
-        FOR(j, 1, fact[i].S)   {
-            gun *= fact[i].F;
-            FOR(k, 0, tmpsz - 1)   {
-                divisors.PB(divisors[k] * gun);
+        for(int j = 1; j <= fact[i].second; j++) {
+            gun *= fact[i].first;
+            for(int k = 0; k < tmpsz; k++) {
+                divisors.push_back(divisors[k] * gun);
             }
         }
     }
