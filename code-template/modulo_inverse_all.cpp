@@ -19,24 +19,9 @@ using namespace std;
 typedef pair<int, int> PII;
 typedef pair<LL, LL> PLL;
 
-
-LL bm(LL base, LL power) {    //bm represents bigmod
-    if(power == 0)  {
-        return 1;
-    }
-    if(power % 2 == 0)  {
-        LL ret = bm(base, power / 2);
-        return (ret * ret) % MOD;
-    }
-    else    {
-        return (base * bm(base, power - 1)) % MOD;
-    }
-}
- 
-LL mod_inv(LL num)   {
-    //fermat's little theorem
-    //modu should be prime to use fermat
-    return bm(num, MOD - 2);
+long long inv(long long a, long long m) {
+	if (a == 1) return 1;
+	return inv(m%a, m) * (m - m/a) % m;
 }
 
 int main() {
@@ -44,7 +29,7 @@ int main() {
 //    freopen("out.txt", "w", stdout);
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
     FastIO;
-    cout << mod_inv(10) << endl;
+    cout << inv(10, MOD);
     return 0;
 }
 /**
