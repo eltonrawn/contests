@@ -33,3 +33,9 @@ nod
 sieve
 range minimum query
 rmq
+pbds
+policy based data structure
+ordered_set
+ncr
+harmonic series
+expected value
