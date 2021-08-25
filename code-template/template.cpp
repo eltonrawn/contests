@@ -11,14 +11,13 @@ typedef pair<int, int> PII;
 typedef pair<LL, LL> PLL;
 
 int main() {
-//    freopen("in.txt", "r", stdin);
-//    freopen("out.txt", "w", stdout);
-    
+    // freopen("in.txt", "r", stdin);
+    // freopen("out.txt", "w", stdout);
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
     int tc;
     cin >> tc;
     for(int tt = 1; tt <= tc; tt++) {
-
+        
     }
     return 0;
 }
