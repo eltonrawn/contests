@@ -43,3 +43,4 @@ disjoint set union
 operator overload
 set operator overload
 repeat
+trie
