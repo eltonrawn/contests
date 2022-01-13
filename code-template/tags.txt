@@ -47,3 +47,5 @@ trie
 lca
 lowest common ancestor
 2000
+matrix exponentiation
+matrix expo
