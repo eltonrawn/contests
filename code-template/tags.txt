@@ -39,6 +39,7 @@ ordered_set
 ncr
 harmonic series
 expected value
+dp with expected value
 disjoint set union
 operator overload
 set operator overload
@@ -47,5 +48,6 @@ trie
 lca
 lowest common ancestor
 2000
+2100
 matrix exponentiation
 matrix expo
