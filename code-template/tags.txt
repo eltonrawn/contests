@@ -11,6 +11,7 @@ dsu on tree
 heavy light trick
 segment tree
 lazy propogation
+lazy propogation with increment
 segment tree with binary search
 dp
 iterative dp
