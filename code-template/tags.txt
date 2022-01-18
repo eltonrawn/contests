@@ -40,6 +40,7 @@ ncr
 harmonic series
 expected value
 dp with expected value
+dp with probability
 disjoint set union
 operator overload
 set operator overload
